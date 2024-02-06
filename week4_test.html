@@ -1,48 +1,47 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS Maps SDK for JavaScript Tutorials: Add a point, line, and polygon</title>
+  <style> 
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.28/"></script>
+  <script>
 
-    <style>
-      html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.28/"></script>
-    <script>
-      require(["esri/config",
-               "esri/Map",
-               "esri/views/MapView",
-               "esri/WebMap"
-              ], function(esriConfig, Map, MapView, WebMap) {
-        esriConfig.apiKey = "AAPK2a19b82d9dc14ee3920822b67b9fd99fUiHQE8xUpR3pdcE7oegEA_K82WwGEHEYXaaDS5AmOhVZ37CZbr0kM5KpC6gU28IC";
-  
-          const map = new Map({
-            basemap: "hybrid" 
-          });
-        
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",
 
-          const webmap = new WebMap({
-          portalItem: { id: "ee21d92075d94cfb9482a32757972a5d"
-  }
-});
-          const view = new MapView({
-            map: webmap,  // The WebMap instance created above
-            container: "viewDiv"
-});
-        
-      });
-  </script>
-  </head>
-  <body>
-    <div id="viewDiv"></div>
-  </body>
+    ], function(esriConfig,Map, MapView) {
+
+  esriConfig.apiKey = "AAPK2a19b82d9dc14ee3920822b67b9fd99fUiHQE8xUpR3pdcE7oegEA_K82WwGEHEYXaaDS5AmOhVZ37CZbr0kM5KpC6gU28IC";
+
+  const map = new Map({
+    basemap: "hybrid" // basemap styles service
+  });
+
+  const view = new MapView({
+    map: map,
+    center: [49.1733,-123.2020], //Longitude, latitude
+    zoom: 13,
+    container: "viewDiv"
+ });
+
+ 
+ });
+</script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
 </html>
