@@ -18,8 +18,9 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.28/"></script>
     <script>
-      require(["esri/config", "esri/Map", "esri/views/MapView","esri/widgets/Locate"], 
-              function(esriConfig, Map, MapView, Locate,) {
+      require(["esri/config", "esri/Map", "esri/views/MapView","esri/widgets/Locate","esri/widgets/Track",
+          "esri/Graphic"], 
+              function(esriConfig, Map, MapView, Locate, Track, Graphic) {
     //    esriConfig.apiKey = "AAPK2a19b82d9dc14ee3920822b67b9fd99fUiHQE8xUpR3pdcE7oegEA_K82WwGEHEYXaaDS5AmOhVZ37CZbr0kM5KpC6gU28IC";
   
           const map = new Map({
@@ -33,15 +34,22 @@
           container: "viewDiv" // Div element
         });
 
-          const locate = new Locate({
+          const track = new Track({
           view: view,
-          useHeadingEnabled: false,
-          goToOverride: function(view, options) {
-            options.target.scale = 1500;
-            return view.goTo(options.target);
-          }
+          graphic: new Graphic({
+            symbol: {
+              type: "simple-marker",
+              size: "12px",
+              color: "green",
+              outline: {
+                color: "#efefef",
+                width: "1.5px"
+              }
+            }
+          }),
+          useHeadingEnabled: false
         });
-        view.ui.add(locate, "top-left");
+        view.ui.add(track, "top-left");
                 
       });
     </script>
