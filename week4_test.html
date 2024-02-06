@@ -22,16 +22,16 @@
         esriConfig.apiKey = "AAPK2a19b82d9dc14ee3920822b67b9fd99fUiHQE8xUpR3pdcE7oegEA_K82WwGEHEYXaaDS5AmOhVZ37CZbr0kM5KpC6gU28IC";
   
           const map = new Map({
-            basemap: "hybrid" // basemap styles service
+            basemap: "hybrid" 
           });
         
           const view = new MapView({
-  map: webmap,  // The WebMap instance created above
+  map: webmap,  
   container: "viewDiv"
 });
 
           const webmap = new WebMap({
-  portalItem: { // autocasts as new PortalItem()
+  portalItem: { 
     id: "ee21d92075d94cfb9482a32757972a5d"
   }
 });
