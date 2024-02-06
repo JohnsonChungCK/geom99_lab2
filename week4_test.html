@@ -18,7 +18,11 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.28/"></script>
     <script>
-      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/WebMap"], function(esriConfig, Map, MapView, WebMap) {
+      require(["esri/config",
+               "esri/Map",
+               "esri/views/MapView",
+               "esri/WebMap"
+              ], function(esriConfig, Map, MapView, WebMap) {
         esriConfig.apiKey = "AAPK2a19b82d9dc14ee3920822b67b9fd99fUiHQE8xUpR3pdcE7oegEA_K82WwGEHEYXaaDS5AmOhVZ37CZbr0kM5KpC6gU28IC";
   
           const map = new Map({
@@ -26,17 +30,18 @@
           });
         
           const view = new MapView({
-  map: webmap,  
-  container: "viewDiv"
+            map: webmap,
+            center: [-118.80500,34.02700],
+            zoom: 12,
+            container: "viewDiv"
 });
 
           const webmap = new WebMap({
-  portalItem: { 
-    id: "ee21d92075d94cfb9482a32757972a5d"
+          portalItem: { id: "ee21d92075d94cfb9482a32757972a5d"
   }
 });
       });
-
+  </script>
   </head>
   <body>
     <div id="viewDiv"></div>
