@@ -1,49 +1,54 @@
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>ArcGIS Maps SDK for JavaScript Tutorials: Add a point, line, and polygon</title>
-  <style> 
-    html, body, #viewDiv {
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title> Sample | ArcGIS Maps SDK for JavaScript 4.28</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.28/"></script>
+
+  <style>
+    html,
+    body,
+    #viewDiv {
       padding: 0;
       margin: 0;
       height: 100%;
       width: 100%;
     }
+
   </style>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
-  <script src="https://js.arcgis.com/4.28/"></script>
+
   <script>
+    require([
+        "esri/WebMap",
+        "esri/views/MapView"
+        
+      ], (
+        WebMap, MapView,
+        Editor
+      ) => {
 
-  require([
-    "esri/config",
-    "esri/Map",
-    "esri/views/MapView"
+        // Create a map from the referenced webmap item id
+        const webmap = new WebMap({
+          portalItem: {
+            id: "ee21d92075d94cfb9482a32757972a5d"
+          }
+        });
 
-    ], function(esriConfig,Map, MapView) {
+        const view = new MapView({
+          container: "viewDiv",
+          map: webmap
+        });
 
-  esriConfig.apiKey = "AAPK343dfc82b5b146d68686844192d250d0p3fhL1qAjCMIh1I2w4D39iKhM7t5H8suY8csUoHDe6-g05mXnm8Nr6JPsXrL3_UH";
-
-  const map = new Map({
-    basemap: "hybrid" // basemap styles service
-  });
-
-  const view = new MapView({
-    map: map,
-    center: [114.168517, 22.293144], //Longitude, latitude
-    zoom: 16,
-    container: "viewDiv"
- });
-
- 
-
- });
-</script>
+      });
+  </script>
 </head>
+
 <body>
   <div id="viewDiv"></div>
 </body>
+
 </html>
