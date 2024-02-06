@@ -29,17 +29,16 @@
             basemap: "hybrid" 
           });
         
-          const view = new MapView({
-            map: webmap,
-            center: [-118.80500,34.02700],
-            zoom: 12,
-            container: "viewDiv"
-});
 
           const webmap = new WebMap({
           portalItem: { id: "ee21d92075d94cfb9482a32757972a5d"
   }
 });
+          const view = new MapView({
+            map: webmap,  // The WebMap instance created above
+            container: "viewDiv"
+});
+        
       });
   </script>
   </head>
