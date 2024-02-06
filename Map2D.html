@@ -18,20 +18,33 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.28/"></script>
     <script>
-      require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
+      require(["esri/config", "esri/Map", "esri/views/MapView","esri/widgets/Locate"], 
+              function(esriConfig, Map, MapView, Locate,) {
     //    esriConfig.apiKey = "AAPK2a19b82d9dc14ee3920822b67b9fd99fUiHQE8xUpR3pdcE7oegEA_K82WwGEHEYXaaDS5AmOhVZ37CZbr0kM5KpC6gU28IC";
   
           const map = new Map({
-            basemap: "arcgis/hybrid" // basemap styles service
+          basemap: "arcgis/navigation"
           });
+        
           const view = new MapView({
           map: map,
           center: [50.4472, -104.6181], // Longitude, latitude
           zoom: 12, // Zoom level
           container: "viewDiv" // Div element
         });
-      });
 
+          const locate = new Locate({
+          view: view,
+          useHeadingEnabled: false,
+          goToOverride: function(view, options) {
+            options.target.scale = 1500;
+            return view.goTo(options.target);
+          }
+        });
+        view.ui.add(locate, "top-left");
+                
+      });
+    </script>
   </head>
   <body>
     <div id="viewDiv"></div>
