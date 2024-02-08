@@ -18,16 +18,18 @@
       height: 100%;
       width: 100%;
     }
+	
 
   </style>
 
   <script>
     require([
         "esri/WebMap",
-        "esri/views/MapView"
+        "esri/views/MapView",
+		"esri/widgets/BasemapGallery"
         
       ], (
-        WebMap, MapView
+        WebMap, MapView,BasemapGallery
     
       ) => {
 
@@ -42,6 +44,14 @@
           container: "viewDiv",
           map: webmap
         });
+		
+		const basemapGallery = new BasemapGallery({
+          view: view
+        });
+
+        view.ui.add(basemapGallery, {
+          position: "bottom-right"
+        });
 
       });
   </script>
@@ -49,6 +59,7 @@
 
 <body>
   <div id="viewDiv"></div>
+ 
 </body>
 
 </html>
